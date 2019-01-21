@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+<<<<<<< HEAD
 """ContigPull_v3.py"""
 #For pulling contigs for a specific tax level & identifier from a given sample that has been analyzed in IDseq.
 #User provides IDseq sampleID_contigs_summary_file.csv, sampleID_contigs.fasta file, the tax level (e.g., family, genus, species) and NCBI tax id of interest.
@@ -22,6 +23,15 @@
  ##sequences/*_contigs_tax_level_tax_id_ContigNodeHits.fasta = batch fasta file of contigs that meet user-specified criteria for pulling.
 
 
+=======
+"""ContigPull_v2.py"""
+
+#author = Amy Kistler
+#date = 20190116
+
+#usage ContigPull_v2.py contig_summary_file.csv ../sequences/contig_fasta_file.fasta tax_level tax_id
+#to do - args for contig length option, align length check
+>>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 
 #importing python tools for script
 import sys
@@ -37,7 +47,11 @@ import subprocess
 node_list =[]
 
 #summary of arguments provided at CLI
+<<<<<<< HEAD
 
+=======
+tax_id = sys.argv[4]
+>>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 
 print('')
 print('Summary of input information you provided:')
@@ -49,10 +63,16 @@ sample_id = contig_summary_file[0:11]
 print('Sample = {0}'.format(sample_id))
 
 tax_level = sys.argv[3]
+<<<<<<< HEAD
 tax_id = sys.argv[4]
 print('tax_level = {0}'.format(tax_level))
 print('tax_id = {0}'.format(tax_id))
 
+=======
+#print('Taxonomy level to search = {0}'.format(tax_level)
+
+#print('tax_id = {0}'.format(tax_id))
+>>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 fastainfile = sys.argv[2]
 contig_fasta_file = fastainfile.split("/")[2]
 print('Contig fasta file = {0}'.format(contig_fasta_file))
@@ -61,7 +81,11 @@ print('')
 #create outfiles for writing key data
 tax_suffix = tax_level + "_" + tax_id + "_ContigNodeHits"
 
+<<<<<<< HEAD
 outfile1 = contig_fasta_file.rstrip("contigs.fasta") + tax_suffix + ".txt"
+=======
+outfile1 = contig_fasta_file.rstrip("contigs.fasta") + tax_suffix + ".csv"
+>>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 #print(outfile1)
 node_listFile = open(outfile1, 'w')
 
@@ -89,6 +113,7 @@ print('{0} rows have contigs > 300bp'.format(len(dfAll300)))
 #create new pandas dataframe for subset of contigs that align to taxID of interest at tax_level of interest
 taxNR = 'NR.' + tax_level + "_taxid"
 taxNT = 'NT.' + tax_level + "_taxid"
+<<<<<<< HEAD
 print(taxNR)
 print(taxNT)
 
@@ -99,6 +124,18 @@ print('{0} rows have NR matches to {1} and tax level'.format((len(dfAll300taxNR)
 dfAll300taxNT = dfAll300[(dfAll300[taxNT].isin([tax_id]))]
 #print(dfAll300taxNT)
 print('{0} rows have NT matches to the {1} and tax level'.format((len(dfAll300taxNT)),(tax_id)))
+=======
+#print(taxNR)
+#print(taxNT)
+
+dfAll300taxNR = dfAll300[(dfAll300[taxNR].isin([tax_id]))]
+#print(dfAll300taxNR)
+print('{0} rows have NR matches to the taxID and tax level'.format((len(dfAll300taxNR)),(tax_id)))
+
+dfAll300taxNT = dfAll300[(dfAll300[taxNT].isin([tax_id]))]
+#print(dfAll300taxNT)
+print('{0} rows have NT matches to the taxID and tax level'.format((len(dfAll300taxNT)),(tax_id)))
+>>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 
 #create pandas data frame for contigs which show E-value <1e-3 for alignment to taxID at tax_level of interest
 dfAll300taxNR1e2E = dfAll300taxNR[(dfAll300taxNR['NR.E-value'] < 0.01)]
@@ -110,10 +147,17 @@ dfAll300taxNT1e2E = dfAll300taxNT[(dfAll300taxNT['NT.E-value'] < 0.01)]
 print('{0} rows from the NT taxID matches show e-value < 1e-2'.format(len(dfAll300taxNT1e2E)))
 
 dfAll300taxNR1e2E['NR.PercentQueryAligned'] = (dfAll300taxNR1e2E['NR.Alignment Length']*3)/dfAll300taxNR1e2E['contig_length']
+<<<<<<< HEAD
 #print(dfAll300taxNR1e2E.head())
 
 dfAll300taxNT1e2E['NT.PercentQueryAligned'] = dfAll300taxNT1e2E['NT.Alignment Length']/dfAll300taxNT1e2E['contig_length']
 #print(dfAll300taxNT1e2E.head())
+=======
+print(dfAll300taxNR1e2E.head())
+
+dfAll300taxNT1e2E['NT.PercentQueryAligned'] = dfAll300taxNT1e2E['NT.Alignment Length']/dfAll300taxNT1e2E['contig_length']
+print(dfAll300taxNT1e2E.head())
+>>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 
 dfAll300taxNR1e2E50p = dfAll300taxNR1e2E[(dfAll300taxNR1e2E['NR.PercentQueryAligned'] > 0.5)]
 print('{0} rows from the NR taxID matches show alignments > 50% query contig length'.format(len(dfAll300taxNR1e2E50p)))
@@ -155,7 +199,11 @@ node_listFile.close()
 print('')
 print('Node list has been written to {0}'.format(outfile1))
 print('')
+<<<<<<< HEAD
 print('Now using node list to pull contig records from {0}'.format(contig_fasta_file))
+=======
+print('Now using node list to pull reads from {0}'.format(contig_fasta_file))
+>>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 
 ##incorporate # fasta reads that were pulled in this last statement
 subprocess.call(['./contigPull.sh'])
