@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ##ContigPull_v3.py_REAME.txt
 ##This is an example of running ContigPull_v3.py for pulling contigs that map to family level tax ID 5654 (Trypanosomatidae) for sample CMS001_035. 
 ##Note 2 key directories, analysis and sequences, need to hold specific files for this to work.
@@ -24,34 +23,10 @@ Contig summary file = CMS001_035_Ra_S20_contigs_summary.csv
 Sample = CMS001_035_
 tax_level = family
 tax_id = 5654
-=======
-##ContigPull_v3.py_README.
-##This is an example of input and output generated when using ContigPull_v3.py
-
-##Setting up directories 1) analysis/ must have the following:
-Kistler-MacBook:analysis amy.kistler$ ls -lFh
--rw-r--r--@ 1 amy.kistler  staff   504K Jan 20 11:01 CMS001_035_Ra_S20_contigs_summary.csv
--rw-r--r--@ 1 amy.kistler  staff   4.8K Jan 20 11:02 ContigPull_v3.py
--rwxr-xr-x  1 amy.kistler  staff   514B Jan 20 11:02 contigPull.sh*
-
-
-##Setting up directories 2) sequences/ must have the following:
-Kistler-MacBook:sequences amy.kistler$ ls -lFh
--rw-r--r--@ 1 amy.kistler  staff   2.4M Jan 20 11:00 CMS001_035_Ra_S20_contigs.fasta
-
-##Calling the script:
-Kistler-MacBook:analysis amy.kistler$ python ContigPull_v3.py CMS001_035_Ra_S20_contigs_summary.csv ../sequences/CMS001_035_Ra_S20_contigs.fasta family 5654
-
-##Output to screen:
-Summary of input information you provided:
-Contig summary file = CMS001_035_Ra_S20_contigs_summary.csv
-Sample = CMS001_035_
->>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 Contig fasta file = CMS001_035_Ra_S20_contigs.fasta
 
 Pandas dataframe created from contig summary file. There are 2675 rows
 2196 rows have contigs > 300bp
-<<<<<<< HEAD
 NR.family_taxid
 NT.family_taxid
 992 rows have NR matches to 5654 and tax level
@@ -59,23 +34,11 @@ NT.family_taxid
 469 rows from the NR taxID matches show e-value < 1e-2
 250 rows from the NT taxID matches show e-value < 1e-2
 ContigPull_v3.py:112: SettingWithCopyWarning: 
-=======
-992 rows have NR matches to the taxID and tax level
-250 rows have NT matches to the taxID and tax level
-469 rows from the NR taxID matches show e-value < 1e-2
-250 rows from the NT taxID matches show e-value < 1e-2
-ContigPull_v3.py:96: SettingWithCopyWarning: 
->>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
   dfAll300taxNR1e2E['NR.PercentQueryAligned'] = (dfAll300taxNR1e2E['NR.Alignment Length']*3)/dfAll300taxNR1e2E['contig_length']
-<<<<<<< HEAD
-=======
-                                   read_count  contig_length  contig_coverage           ...              NR.E-value  NR.Bitscore  
-
->>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
 396 rows from the NR taxID matches show alignments > 50% query contig length
 219 rows from the NT taxID matches show alignments > 50% query contig length
 
@@ -131,7 +94,6 @@ Here are the contig node ids that align to taxID 5654:
 
 Node list has been written to CMS001_035_Ra_S20_family_5654_ContigNodeHits.txt
 
-<<<<<<< HEAD
 Now using node list to pull contig records from CMS001_035_Ra_S20_contigs.fasta
 Done! Contigs should be found in ../sequences/CMS001_035_Ra_S20_family_5654_ContigNodeHits.fasta
 
@@ -150,22 +112,3 @@ Kistler-MacBook:sequences amy.kistler$ ls -lFh
 total 5496
 -rw-r--r--@ 1 amy.kistler  staff   2.4M Jan 21 12:48 CMS001_035_Ra_S20_contigs.fasta
 -rw-r--r--  1 amy.kistler  staff   261K Jan 21 12:58 CMS001_035_Ra_S20_family_5654_ContigNodeHits.fasta
-=======
-Now using node list to pull reads from CMS001_035_Ra_S20_contigs.fasta
-Done! Contigs should be found in ../sequences/CMS001_035_Ra_S20_family_5654_ContigNodeHits.fasta
-
-
-##Here's the output you should see in analysis/ and sequences/ directories afterward:
-Kistler-MacBook:analysis amy.kistler$ ls -lFh
-total 1080
--rw-r--r--@ 1 amy.kistler  staff   504K Jan 20 11:01 CMS001_035_Ra_S20_contigs_summary.csv
--rw-r--r--  1 amy.kistler  staff    14K Jan 20 11:33 CMS001_035_Ra_S20_family_5654_ContigNodeHits.txt
--rw-r--r--@ 1 amy.kistler  staff   4.8K Jan 20 11:02 ContigPull_v3.py
--rwxr-xr-x  1 amy.kistler  staff   514B Jan 20 11:02 contigPull.sh*
--rw-r--r--  1 amy.kistler  staff    58B Jan 20 11:33 sample_listFile
-
-Kistler-MacBook:sequences amy.kistler$ ls -lFh
-total 1089544
--rw-r--r--@ 1 amy.kistler  staff   2.4M Jan 20 11:00 CMS001_035_Ra_S20_contigs.fasta
--rw-r--r--@ 1 amy.kistler  staff   261K Jan 20 11:33 CMS001_035_Ra_S20_family_5654_ContigNodeHits.fasta
->>>>>>> 80e648fdcc0184cd0769331651ece1f9af704d46
