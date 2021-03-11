@@ -1,8 +1,11 @@
-##ContigPull_v3.py_REAME.txt
+##ContigPull_v3.md
+
 ##This is an example of running ContigPull_v3.py for pulling contigs that map to family level tax ID 5654 (Trypanosomatidae) for sample CMS001_035. 
+
 ##Note 2 key directories, analysis and sequences, need to hold specific files for this to work.
  
 ##analysis directory contents prior to starting: needs ContigPull_v3.py and contigPull.sh scripts, along with the contig summary file for CMS001_035 you can download from IDseq Report Details tab. 
+
 Kistler-MacBook:analysis amy.kistler$ ls -lFh
 total 1040
 -rw-r--r--@ 1 amy.kistler  staff   504K Jan 21 12:46 CMS001_035_Ra_S20_contigs_summary.csv
@@ -10,14 +13,17 @@ total 1040
 -rwxr-xr-x  1 amy.kistler  staff   514B Jan 21 12:56 contigPull.sh*
 
 ##sequences directory contents prior to starting: need to have the CMS001_035 contigs fasta file you can download from IDseq Report Details tab.
+
 Kistler-MacBook:analysis amy.kistler$ ls -lFh ../sequences/
 total 4968
 -rw-r--r--@ 1 amy.kistler  staff   2.4M Jan 21 12:48 CMS001_035_Ra_S20_contigs.fasta
 
 ##in analysis directory, you kick off the program:
+
 Kistler-MacBook:analysis amy.kistler$ python ContigPull_v3.py CMS001_035_Ra_S20_contigs_summary.csv ../sequences/CMS001_035_Ra_S20_contigs.fasta family 5654
 
 ##here's the output printed to screen you should see:
+
 Summary of input information you provided:
 Contig summary file = CMS001_035_Ra_S20_contigs_summary.csv
 Sample = CMS001_035_
@@ -98,6 +104,7 @@ Now using node list to pull contig records from CMS001_035_Ra_S20_contigs.fasta
 Done! Contigs should be found in ../sequences/CMS001_035_Ra_S20_family_5654_ContigNodeHits.fasta
 
 #Here are output files generated and saved to analysis directory
+
 Kistler-MacBook:analysis amy.kistler$ ls -lFh
 total 1080
 -rw-r--r--@ 1 amy.kistler  staff   504K Jan 21 12:46 CMS001_035_Ra_S20_contigs_summary.csv
@@ -107,6 +114,7 @@ total 1080
 -rw-r--r--  1 amy.kistler  staff    58B Jan 21 12:58 sample_listFile
 
 #Here are output files generated and saved to sequences directory
+
 Kistler-MacBook:analysis amy.kistler$ cd ../sequences/
 Kistler-MacBook:sequences amy.kistler$ ls -lFh
 total 5496
